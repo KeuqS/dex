@@ -43,7 +43,7 @@ from . import plans as plans_mod
 # the reason stated above.
 from .build import DependencyPolicy
 from .native_semantic import edits_from_payload, plan_hint, read_payload_file
-from .plans import EditKind, PlanEdit, PlanError
+from .plans import EditKind, PlanEdit, PlanError, PlanNotFoundError
 from .results import (
     ApplyResult,
     BuildResult,
@@ -1778,7 +1778,7 @@ def apply(engine: DexEngine, plan_id: str | None = None) -> ApplyResult:
         # way a model plan does).
         latest = store.latest_plan(None)
         if latest is None:
-            raise ValueError(
+            raise PlanNotFoundError(
                 "no unapplied plan found; run `transform plan` or `semantic "
                 "define|update|plan` first, or pass a plan id"
             )
@@ -1858,7 +1858,7 @@ def _resolve_plan_id(
         return store, plan_id
     latest = store.latest_plan(None)
     if latest is None:
-        raise ValueError(
+        raise PlanNotFoundError(
             "no unapplied plan found; run `transform plan` or `semantic "
             "define|update|plan` first, or pass a plan id"
         )
