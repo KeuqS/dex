@@ -139,13 +139,13 @@ if TYPE_CHECKING:  # what a type checker and an IDE see; never run
     from .cache import ColumnProfile, Dataset, DexCache, Relationship
     from .config import DexConfig
     from .config_document import ConfigEditError, InvalidConfigError
-    from .dbt_project import DbtProjectError
     from .connect import (
         ConnectionSource,
         CredentialDiscoveryError,
         ScopeError,
         SemanticSource,
     )
+    from .dbt_project import DbtProjectError
     from .demo import (
         DEMO_FILENAME,
         DemoDependencyError,
@@ -252,6 +252,9 @@ __all__ = [
     "CostGuardError",
     "CredentialDiscoveryError",
     "Dataset",
+    "DbtParseError",
+    "DbtProjectError",
+    "DbtRunError",
     "DemoDependencyError",
     "DemoError",
     "DemoPathError",
@@ -260,11 +263,8 @@ __all__ = [
     "DexConfig",
     "DexEngine",
     "DexError",
-    "DbtParseError",
-    "DbtProjectError",
-    "DbtRunError",
-    "DialectDependencyError",
     "DevTargetError",
+    "DialectDependencyError",
     "Document",
     "EditValidationError",
     "ExploreStore",

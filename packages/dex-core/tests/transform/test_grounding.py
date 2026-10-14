@@ -48,9 +48,8 @@ def _model(path: str, content: str) -> PlanEdit:
 
 
 def test_engine_ground_without_plan_raises_a_typed_error():
-    with DexEngine(store=MemoryStore()) as engine:
-        with pytest.raises(PlanNotFoundError):
-            engine.ground()
+    with DexEngine(store=MemoryStore()) as engine, pytest.raises(PlanNotFoundError):
+        engine.ground()
 
 
 @pytest.fixture

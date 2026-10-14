@@ -126,9 +126,8 @@ def test_apply_without_plan_id_and_no_plans_is_a_clean_error(
 
 
 def test_engine_apply_without_plan_raises_a_typed_error():
-    with DexEngine(store=MemoryStore()) as engine:
-        with pytest.raises(PlanNotFoundError):
-            engine.apply()
+    with DexEngine(store=MemoryStore()) as engine, pytest.raises(PlanNotFoundError):
+        engine.apply()
 
 
 def test_apply_without_id_takes_the_latest_unapplied_plan(
